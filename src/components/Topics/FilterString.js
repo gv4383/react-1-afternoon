@@ -15,21 +15,19 @@ class FilterString extends Component {
   }
 
   filterArr(str) {
-    let filteredArr = [];
-    let counter = 0;
-    // iterates through unFilteredArray
-    for (let i = 0; i < this.state.unFilteredArray.length; i++) {
-      counter = 0;
-      // iterates through each individual letter in str input
-      for (let j = 0; j < str.length; j++) {
-        if (this.state.unFilteredArray[i][j] === str[j]) {
-          counter += 1;
-          if (counter === str.length) {
-            filteredArr.push(this.state.unFilteredArray[i]);
-          }
-        }
-      }
-    }
+    const { unFilteredArray } = this.state;
+
+    let filteredArr = unFilteredArray.filter((name, i, arr) => name.includes(str));
+
+    // let filteredArr = [];
+
+    // for (let i = 0; i < unFilteredArray.length; i++) {
+    //   if (unFilteredArray[i].includes(str)) {
+    //     filteredArr.push(unFilteredArray[i]);
+    //   }
+    // }
+    // console.log(filteredArr);
+
     this.setState( { filteredArray : filteredArr } );
   }
 
